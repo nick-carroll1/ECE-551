@@ -1,0 +1,136 @@
+In this and the next problem, you will work on code for a game called
+minesweeper. If you are not familiar with the game of minesweeper, you
+might take a minute to read up about it on the internet, but you don't
+need much game expertise to do these assignments. 
+
+For this problem, you will practice debugging a completed
+implementation of minesweeper. In the next, you will write several
+functions yourself. For more information on the game you will write
+for the next problem, see the instructions in next-README, which will
+be the README in the next assignment.
+
+Doing this debugging assignment beforehand is both an opportunity for
+you to practice debugging skills (always a good thing) and also to
+practice working on completed code you did not write yourself. It is
+*much* harder to read, understand, and debug code you are not as
+familiar with. In these cases especially, debugging with the
+scientific method is important!
+
+Recall that the steps of the scientific method are
+1.  Observe a phenomenon.
+2.  Ask a question.
+3.  Gather information, and apply expert knowledge.
+4.  Form a hypothesis.
+5.  Test the hypothesis.
+
+Look in minesweeper.h. It defines constants for handling game logic, a
+macro for determining if a square is a mine, and the definition of the
+struct representing the game board. The functions you will write in
+the next assignment are declared, but you do not have their source
+code in this assignment. Rather, you have an object file future.o,
+which can be used to compile the "minesweeper" executable with the
+provided Makefile.
+
+======================
+First bug
+
+Compile the program, and run the program to create a board with width
+2, height 3, and 1 mine.
+
+./minesweeper 2 3 1
+
+Play the first round of the game by selecting the top left square
+(0,0). You will see that the program segfaults!
+
+You have done the first step of the scientific method: observe a
+phenomenon. There is a problem with the minesweeper program. The next
+step is to ask a question: why is the program segfaulting?
+
+The next step is to gather information and apply expert knowledge. You
+have the knowledge that a segmentation fault occurs when the program
+tries to access memory in an invalid way. However, you likely need to
+gather more information to form a hypothesis. Instead of reading
+carefully through the code, looking for a mistake, you can use tools
+like Valgrind and GDB to gather information.
+
+Valgrind is a good starting point for debugging segfaults. Run the
+program again with Valgrind. 
+
+valgrind ./minesweeper 2 3 1
+
+The first error should look similar to:
+
+Invalid read of size 8
+   at 0x109D50: maybeReveal (minesweeper.c:183)
+   by 0x109FBF: determineKnownMines (minesweeper.c:212)
+   by 0x10A140: playTurn (minesweeper.c:241)
+   by 0x10A2F7: main (minesweeper.c:281)
+ Address 0x4a8e098 is 8 bytes before a block of size 24 alloc'd
+   at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+   by 0x10A3B5: makeBoard (future.c:6)
+   by 0x10A2D3: main (minesweeper.c:278)
+
+This gives you a lot of information you can use to direct your
+inquiry. An invalid read means the program tried to read the value of
+a box in memory that is not allowed. Further, you know that the box is
+8 bytes large, and before a block of 24 bytes that was
+allocated. Think about what data types are typically 8 bytes, and
+where the program is likely to have allocated 3 boxes together. Hint:
+look at the board_t struct, and think about the inputs to the
+program. The program likely tried to access a value outside of array
+bounds. 
+
+You also have some function names and line numbers to help get you
+started. The invalid read happens in the maybeReveal function,
+although we don't know exactly where the bug that caused it is.
+
+Maybe you have a hypothesis in mind already. Even if not, GDB is a
+great next tool to use to gather information.
+
+Open minesweeper.c in Emacs, and run GDB. You have six windows, which
+can be intimidating, but they show you where in the code the execution
+is, which functions are being executed, and what the local variables
+are.
+
+Review GDB commands to step through the program efficiently. Set
+breakpoints where you find them useful. You might consider setting a
+breakpoint in maybeReveal, or in playTurn.
+
+break maybeReveal
+
+One quirk: when you execute a line of code that requires input from
+the user, you need to move to the *input/output of minesweeper* buffer
+to provide the input. C-x o is the command to move between split
+windows. You need to do this 3 times to reach the window with the
+input/output buffer. 
+
+Step through the code until you encounter the segfault. Look at the
+array index that causes the segfault, and either look at the local
+register window in GDB or use GDB to print the value of the indices
+(in this case, ny and nx). If you can come up with a hypothesis to
+test now, great! If not, continue using GDB to gather information by
+running the program with different inputs.
+
+Correct the code in minesweeper.c when you determine the mistake.
+
+======================
+Second bug
+
+Once you fix the first mistake, you should be able to play a game
+without segfaulting. Run the 3x2 board with 1 mine again, and play the
+game.
+
+Depending on the squares you choose, you may notice that you can "win"
+the game when not all squares are revealed.
+
+Observe a phenomenon: the game says you won when you did not!
+Ask a question: why is the game saying I won?
+
+Now that you have practice debugging this program with the scientific
+method, continue gathering information with GDB until you can come up
+with a hypothesis to test. We recommend using GDB to determine which
+square has a mine, so you can choose which square to click wisely.
+
+When you identify the second mistake, correct the code in
+minesweeper.c. Once you have tested the game and verified this
+implementation is correct, submit your code for grading.

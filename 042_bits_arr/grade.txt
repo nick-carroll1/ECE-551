@@ -1,0 +1,21 @@
+Grading at 09/12/2023:22:49:47.795139
+For commit ID 5a4f15fb9b3b97c3555c91fa03a6087b29037ca5
+Grading at Tue Sep 12 06:49:47 PM EDT 2023
+Attempting to compile numToBits.c
+Your file matched the expected output
+Your output matched what we expected
+Removing your main() and replacing it with our own to run more tests...
+#################################################
+testcase2:
+array size:0 was Correct
+#################################################
+testcase3:
+array size:1 was Correct
+#################################################
+testcase4:
+array size:100 was Correct
+#################################################
+testcase5:
+array size:5000 was Correct
+
+Overall Grade: A

@@ -1,0 +1,326 @@
+In this evaluative assignment, you will write four pieces of a program to
+analyze sunspots data. Our sample data comes from this source: 
+https://www.kaggle.com/datasets/robervalt/sunspots.
+
+Sunspots are temporary phenomena on the Sun's photosphere that appear as spots
+darker than the surrounding areas. They are regions of reduced surface
+temperature caused by concentrations of magnetic field flux that inhibit
+convection. Sunspots usually appear in pairs of opposite magnetic polarity.
+Their number varies according to the approximately 11-year solar cycle
+(Source: https://en.wikipedia.org/wiki/Sunspot). 
+
+You will be guided to figure out this cycle in this assignment. The file
+sunspots_data.csv has the monthly averaged numbers of sunspots from Januaray
+1755 to December 2020. The first two years of sunspots data are given in
+sunspots_small.csv.
+
+You have two provided source code files: sunspots.h and sunspots.c. In
+sunspots.h, you see a struct which is used for storing number of sunspots in a
+particular year and month. You should not modify anything in this file. Next
+are four function prototypes for functions you will write in each step. In
+sunspots.c, you see the definitions of each of the four functions, which you
+will write. 
+
+Your grade comprises the four steps and code quality with the following
+breakdown: 
+
+Step 1:        25
+Step 2:        25
+Step 3:        20
+Step 4:        20
+Code quality:  10
+-----------------
+Total:        100
+
+Step 1
+===========================================================================
+
+Write the function parseLine, which takes a string in the form
+
+date,number of sunspots
+
+such as those in sunspots_data.csv, and returns an ss_monthly_t. The date has
+the form of YYYY-MM, which is 4 digits of year and 2 digits of month connected
+by a hyphen. A valid year must be 4 digits and can be any number between 0000
+and 9999 (inclusive). A valid month must be 2 digits within 01 through 12
+(inclusive). A comma follows and separates the date from the number of
+sunspots, which is a non-negative floating point number. (The reason that the
+sunspots number is not an integer is because it is an averaged value of daily
+numbers of sunspots within that month.) You should parse the year, month, and
+number of sunspots from the input string and write them to an ss_monthly_t.
+Note, you don't need to care about any leading zeros in year and month in the
+string. For example, if the date is 0968-06, assign 968 to the year and 6 to
+the month in the struct. If there are any errors in the input file, including
+values that cannot be represented with the data types we have described, print
+an appropriate error message to stderr and exit with a failure status.  
+
+Test your code thoroughly before moving on to the next step. We have provided
+a Makefile, so you can do
+
+make printSsData
+
+and your code will be linked with ours, so you can test this step like this:
+
+./printSsData sunspots_data.csv
+
+If your code works well, you will see the exactly same output as shown in the
+data file, including the header. So you may use diff to compare the output of
+the program and the original data file, like this: 
+
+./printSsData sunspots_data.csv | diff sunspots_data.csv -
+
+Look in /usr/local/ece551/sunspots/. You will find additional data files for
+this project. All provided csv files can be used to test your code in this
+step. 
+
+Of course, you should test with many more inputs than those provided to be
+confident your code works well.
+
+Be sure to git add, commit, and push your code when you are done testing this
+step.
+
+Step 2
+===========================================================================
+
+In this step you will write a mean filter. A mean filter operates by replacing
+each data point with the average of itself and its neighboring data points
+within a window w. The window should be centered at the data point which mean
+filter operates on. In this problem we restricts w to be a positive odd
+integer so that there are the same number of data points on both sides within
+the window. Besides, w should not be larger than the length of the data. To
+help you understand how a mean filter works, here is an example:
+
+If we apply a mean filter with w = 5 to the following data sequence, 
+
+17.0, 18.7, 11.3, 10.8, 0.0, 0.0, 14.3
+
+after mean filtering, the thrid value 11.3 will be replaced by
+
+(17.0 + 18.7 + 11.3 + 10.8 + 0.0) / 5 = 11.56
+
+For the data points close to the boundary where one side of the window may be
+out of bounds, take as many data points as possible to calculate the average.
+For example, applying the same mean filter to the same sequence above, we will
+replace the first value 17.0 with,
+
+(17.0 + 18.7 + 11.3) / 3 = 15.67
+
+This is because the left side of the window is out of bound, so we can only
+include 17.0 itself and the other 2 values on the right side in the window to
+calculate the average. Similarly, the second value 18.7 will be replaced by 
+
+(17.0 + 18.7 + 11.3 + 10.8) / 4 = 14.65
+
+(Note: The calculations above are rounded because they were done by hand. You
+should store your results to double precision without any rounding. Besides,
+we just showed a simple case of applying a mean filter to a number sequence.
+The size of the sequence is arbitrary and w can be any positive odd integers
+no larger than the length of the sequence.) 
+
+The function meanFilter takes an array of ss_monthly_t "data" (to be
+mean-filtered), the size of the array "n", another array of ss_monthly_t
+"mean", which is where you will write the results of calculation, and an
+unsigned integer "w", which is the width of the mean filter's window. 
+
+If there are any errors, your program should print an appropriate error
+message to stderr and exit with a failure status. 
+
+Test your code thoroughly before moving on to the next step by doing
+
+make printFilteredSsData
+
+and your code will be linked with ours, so you can test this step like this:
+
+./printFilteredSsData sunspots_data.csv w
+
+where w is the width of the mean filter's window. Our code will call the
+parseLine function you wrote your in the last step, rearrange the data to feed
+into the function meanFilter you write in this step, then print out the
+filtered data. 
+
+We have applied our mean filter to the data in sunspots_small.csv with w = 5
+and saved the results to file sunspots_small_filtered_5.csv. (See the provided
+data files in /usr/local/ece551/sunspots/.) File sunspots_data_filtered_71.csv
+contains the mean-filtered data from sunspots_data.csv with w = 71. You may
+use these two files as references when writing and testing your code. You
+could also use diff to compare the output of the program and the references. 
+
+Of course, you should test with many more inputs than those provided to be
+confident your code works well.
+
+Be sure to git add, commit, and push your code when you are done testing this
+step.
+
+Step 3
+===========================================================================
+
+You will write a function related to finding the local maximum value of a
+sequence of data. Finding local maximums is nontrivial in numerical
+calculation, which may require advanced techniques from calculus. But we have
+simplified this problem so you don't need to spend a large amount of time on
+advanced mathematics. We have partitoned the data after mean filtering
+(w = 71) and saved some of them in the folder "step3_data". If you take a look
+at the data in each file, you will find they form a concave down shape, which
+means the local maximum value is essentially the largest value in that
+subdataset.
+
+Write function findLocalMax which takes an array of ss_monthly_t "data" and
+the size of the arrays "n". This function should find the largest number of
+sunspots in array "data" and return a double of the corresponding time stamp
+by calculating
+
+year + month / 12.0
+
+This is the way we choose to represent the year and month with one time stamp
+so that you can use it in next step to figure out the period of the sunspots. 
+
+In this particular problem, we treat an input array with 0 elements as an error
+case.
+
+If there are multiple largest values, pick the first occurence.
+
+If there are any errors, your program should print an appropriate error
+message to stderr and exit with a failure status.
+
+As always, you should test your code thoroughly before moving on to the next
+step. For this step you can do 
+
+make printLocalMax
+
+and test
+
+./printLocalMax step3_data/sunspots_filtered_part_00.csv
+
+as well as other files in the step3_data.
+
+Of course, you should test with many more inputs than those provided to be
+confident your code works well. You may make your own test files, but note
+that if the data is not concave down, the result will not actually be a local
+maximum. 
+
+Be sure to git add, commit, and push your code when you are done testing this
+step. 
+
+Step 4
+===========================================================================
+
+Write function calcSsPeriod to calculate the period (cycle) of the sunspots.
+This function takes an array of doubles "timeStamps" and the size of the array
+"n". Array timeStamps includes values of time stamps corresponding to the
+local maximums of the sunspots data, i.e., the returned value of the function
+you write in step 3. 
+
+There are many ways to figure out the period, but we will use the simplest
+one. Calculate the differences of the adjacent values in array timeStamps. If
+there are n values in timeStamps, there should be n-1 differences. Then
+calculate the average of the differences, which is the estimated period of the
+sunspots and should be returned. This approach requires n to be at least 2 to
+estimate the period.
+
+For example, if timeStamps are:
+
+1761.42, 1769.83, 1778.42, 1788.00, 1804.83, 1817.25
+
+Then the differences are:
+
+1769.83 - 1761.42 = 8.41
+1778.42 - 1769.83 = 8.59
+1788.00 - 1778.42 = 9.85
+1804.83 - 1788.00 = 16.83
+1817.25 - 1804.83 = 12.42
+
+Thus, the average of the differences is
+
+(8.41 + 8.59 + 9.85 + 16.83 + 12.42) / 5 = 11.22
+
+(Note: The calculations above are rounded because they were done by hand. You
+should store your results to double precision without any rounding.)
+
+If there are any errors, your program should print an appropriate error
+message to stderr and exit with a failure status. 
+
+As always, you should test your code thoroughly. For this step you can do
+
+make printSsPeriod
+
+and test
+
+./printSsPeriod sunspots_data.csv w
+
+where w is the width of the mean filter's window. Our code will call your
+function parseLine to read the data in, rearrange the data to feed into your
+function meanFilter with the width you provided, then do partitioning with our
+code and find the corresponding timeStamps to the local maximums with your
+function findLocalMax, finally calculate the period of the sunspots with your
+function calcSsPeriod and print out one line like 
+
+The estimated period of sunspots is 10.989130 years.
+
+(Your estimated period should be close to 11 years.)
+
+Of course, you should test with many more inputs than those provided to be
+confident your code works well. We provide several test files, in addition to
+sunspots_data.csv: sunspots_55yrs.csv and sunspots_178yrs.csv
+(in /usr/local/ece551/sunspots/). You are free to make your own test files.
+But for the period to be realistic, the test file must be a part of the
+original sunspots_data.csv file, starting from the beginning of the time
+series and ending after 20 years (240 months). The first line in your test file
+should be the header "date,number of sunspots".
+
+Be sure to git add, commit, and push your code when you are done testing this
+step. 
+
+Code Quality
+===========================================================================
+
+Your code will also be graded for its quality. Your grader will assess the
+quality of the abstraction, naming, formatting, and documentation of your
+code. For this assignment, make sure the functions you write do not get too
+long, variable names are meaningful, formatting is standard (you can do this
+automatically by saving in Emacs; otherwise, you should run clang-format on
+your source code file), and that you document your work by adding a comment
+describing each of the functions you write, as well as a comment if you write
+anything complex or unusual.  
+
+Testing
+===========================================================================
+
+We will provide a "pregrader" you can use to run your own test cases to make
+sure your code's output agrees with the output of our implementation. Before
+the deadline, when you do 'grade', the pregrader will look for a file
+testcases.txt with the following format:  
+
+#error
+printSsData invalid.csv
+printFilteredSsData sunspots_data.csv 10
+
+#success
+printSsData sunspots_data.csv
+printFilteredSsData sunspots_data.csv 71
+
+That is, a section with the #error header containing error test cases, which
+should give an appropriate error message and exit with a failure status. You
+are free to make your own test files. 
+
+The next section has a #success header and is followed by test cases that
+should have a success status. For these the pregrader will check that your
+results match ours. 
+
+You may write as many test cases as you like, but you are limited to 20
+seconds of compute time by the pregrader. 
+
+Reminders
+===========================================================================
+
+Before the hard deadline, your code will be graded by the pregrader that runs
+your test cases. After the hard deadline, your code will be graded ONCE. You
+may run "grade" as many times as you like, but the last commit after which you
+run grade before the deadline will be your submission. Grading quality takes
+some time, so expect your real grade to take about a week to come back. 
+
+When testing, you should think of error cases, corner cases, and design your
+own test inputs. Your code should valgrind without errors on all cases and
+without memory leaks on all success cases. 
+
+This is an INDIVIDUAL assignment. You are only allowed to communicate
+regarding this assignment with an instructor or TA. 

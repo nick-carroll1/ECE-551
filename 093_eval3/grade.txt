@@ -1,0 +1,353 @@
+Grading at 12/06/2023:22:48:53.901515
+For commit ID ccf3a711bd9dca18b7a0a45257004c4332c3bf1f
+Grading at Wed Dec  6 05:48:09 PM EST 2023
+Doing some basic checking for your submission
+
+Step 1
+Checking that cyoa-step1 compiles
+g++ --std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
+g++ -o cyoa-step1 --std=gnu++98 -pedantic -Wall -Werror -ggdb3 cyoa-step1.o textParser.o story.o
+The code compiled (good)
+Executable cyoa-step1 exists (good)
+------------------------------------
+Now running YOUR tests for step 1
+------------------------------------
+
+
+1.1: Current test is ./cyoa-step1  < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Inappropriate number of arguments were provided.-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.2: Current test is ./cyoa-step1 /usr/local/ece551/cyoa/story1 < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+1.3: Current test is ./cyoa-step1 /usr/local/ece551/cyoa/story2 < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+1.4: Current test is ./cyoa-step1 testCases/story_missingPage < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Number outside acceptable range-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.5: Current test is ./cyoa-step1 testCases/story_pageOutOfOrder < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+1.6: Current test is ./cyoa-step1 testCases/story_badType < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+This line has an invalid page type-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.7: Current test is ./cyoa-step1 testCases/story_noPath < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+There was an error with the file-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.8: Current test is ./cyoa-step1 testCases/story_missingAmpersand < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Number outside acceptable range-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.9: Current test is ./cyoa-step1 testCases/story_badPath < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+There was an error with the file-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.10: Current test is ./cyoa-step1 testCases/story_badNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Number outside acceptable range-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.11: Current test is ./cyoa-step1 /usr/local/ece551/cyoa/story1 /usr/local/ece551/cyoa/story2 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Inappropriate number of arguments were provided.-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+No request to check for intermediate deadline completion on step 1
+
+Step 2
+Checking that cyoa-step2 compiles
+g++ -o cyoa-step2 --std=gnu++98 -pedantic -Wall -Werror -ggdb3 cyoa-step2.o textParser.o story.o
+The code compiled (good)
+Executable cyoa-step2 exists (good)
+------------------------------------
+Now running YOUR tests for step 2
+------------------------------------
+
+
+2.1: Current test is ./cyoa-step2  < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string: construction from null is not valid
+timeout: the monitored command dumped core
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.2: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input0.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+2.3: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input1.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+2.4: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story1/inputs/input0.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+2.5: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story1/inputs/input1.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+No request to check for intermediate deadline completion on step 2
+
+Step 3
+Checking that cyoa-step3 compiles
+g++ --std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c dfs.cpp
+g++ -o cyoa-step3 --std=gnu++98 -pedantic -Wall -Werror -ggdb3 cyoa-step3.o dfs.o textParser.o story.o
+The code compiled (good)
+Executable cyoa-step3 exists (good)
+------------------------------------
+Now running YOUR tests for step 3
+------------------------------------
+
+
+3.1: Current test is ./cyoa-step3  < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Inappropriate number of arguments were provided.-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+3.2: Current test is ./cyoa-step3 /usr/local/ece551/cyoa/story1 < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+3.3: Current test is ./cyoa-step3 /usr/local/ece551/cyoa/story2 < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+No request to check for intermediate deadline completion on step 3
+
+Step 4
+Checking that cyoa-step4 compiles
+g++ --std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step4.cpp
+g++ -o cyoa-step4 --std=gnu++98 -pedantic -Wall -Werror -ggdb3 cyoa-step4.o story.o textParser.o
+The code compiled (good)
+Executable cyoa-step4 exists (good)
+------------------------------------
+Now running YOUR tests for step 4
+------------------------------------
+
+
+4.1: Current test is ./cyoa-step4  < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Inappropriate number of arguments were provided.-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+4.2: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input0.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.3: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input10.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.4: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input11.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.5: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input14.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.6: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input15.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.7: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input16.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.8: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input17.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.9: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input18.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.10: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input19.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.11: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input1.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.12: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input20.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.13: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input21.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.14: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input22.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.15: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input23.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.16: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input24.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.17: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input25.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.18: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input2.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.19: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input3.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.20: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input4.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.21: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input5.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.22: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input6.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.23: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input7.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.24: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input8.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+
+4.25: Current test is ./cyoa-step4 /usr/local/ece551/cyoa/story3  <  /usr/local/ece551/cyoa/story3/inputs/input9.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+No request to check for intermediate deadline completion on step 4
+
+You have passed the test cases YOU provided
+If your tests are good, this is great. 
+If your tests are insufficient, you should do much more testing
+
+Overall Grade: NO GRADE YET

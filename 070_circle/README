@@ -1,0 +1,84 @@
+***********************************
+ChatGPT allowed for this assignment
+***********************************
+
+This assignment encourages you to explore the use of a popular large
+language model (LLM), ChatGPT, in order to help you think about what
+these tools will be helpful with and what the programmer needs to be
+able to do to specify the problem and test that the answer is
+reasonable. 
+
+The original version of this problem asked you to make a "Circle"
+class, which makes use of your "Point" class from the previous
+assignment. Start by symlinking point.hpp and point.cpp from the point
+directory into the current directory:
+
+  ln -s ../[point dir]/point.hpp
+  ln -s ../[point dir]/point.cpp
+
+Now write a circle.hpp file, which declares the class Circle. Your
+circle class should have two private fields:
+  - A Point for the center (remember: Point is a type, so we can have
+    a field whose type is "Point")
+  - A const double for the radius
+
+Your circle should then have three pieces of public functionality:
+  1.  A constructor that takes a Point and a double and initializes
+      the center and radius from them. Note that you should use an
+      initializer list for both fields and will *have to* for the
+      const radius field. 
+  2.  The method:
+        void move (double dx, double dy)
+      which moves the circle's center by <dx,dy> (hint: Point already
+      has a move method) 
+  3.  The method 
+        double intersectionArea(const Circle & otherCircle)
+      which computes the area of the intersection of this circle and
+      otherCircle. 
+      Note that if you lack the domain knowledge for this problem, you
+      can (and should) find it on the internet before you begin the
+      problem! 
+
+Declare these methods and constructor in your Circle class (in
+circle.hpp) and implement them in circle.cpp.
+
+Try using the above directions as a prompt to ChatGPT.
+
+Check the result:
+
+- Private fields
+- The constructor
+  o Are the parameter types correct?
+  o Does it do what you expect?
+- move method
+- intersectionArea method
+  o How can you test this?
+
+We provide a main.cpp file that reads in circles from stdin and
+calculates their intersections. The input it reads starts with a line
+containing the number of circles to have. The next (ncircles) lines
+describe a circle with three doubles: x y radius. After that, there
+are 0 or more commands, "i c1 c2" or "m cnum dx dy". The first prints
+the area of intersection of circles c1 and c2 (where these are numbers
+that specify which circle). The second moves circle cnum by
+(dx,dy). We providee a sample input (input1.txt) and output
+(output1.txt).
+
+Prompt ChatGPT to create a Makefile, which will compile your code into
+a program called "circles".
+
+How do you need to prompt it to work for this directory layout, C++ 98
+standard, and the -Wall -Werror -pedantic compiler flags we like to
+use? Are there any other dependencies you think should be in it?
+
+Test your code with the provided input1.txt and output1.txt like
+
+./circles < input1.txt
+
+And make sure the output matches output1.txt.
+
+Submit all your source code and Makefile for this problem. Then find
+the reflection assignment on the Canvas site.
+
+If you want to do some ungraded extra practice, see the
+EXTRA-PRACTICE-README. 

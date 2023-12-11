@@ -1,0 +1,36 @@
+As always, read and understand Chapters 25 and 26, then answer these questions
+in "answers.txt".  Unlike usual, this quiz covers two chapters.
+
+1. What is a DAG?
+
+A. Deterministic Acyclic Graph
+B. Directed Acyclic Graph
+C. Deterministic Analysis Graph
+D. Directed Analysis Graph
+E. None of the above
+
+2. What kind of graph do you build to apply graph coloring to resource allocation?
+
+A. Antichromatic graph
+B. Polycyclic graph
+C. Resource intensity graph
+D. Interference graph
+E. Inverse edge-weighting graph
+F. None of the above
+
+3. Which of these problems is NOT NP-Complete:
+
+A. Graph coloring
+B. Strongly Connected Components
+C. Traveling Salesperson
+D. Clique
+E. Independent Set
+F. None of the above (all are NP-Complete)
+
+4. What does it mean for a sort to be "stable"?
+
+A. It is guaranteed to give the right answer
+B. Its running time does not depend on the values of the data
+C. Equal elements remain in the same order
+D. It has a steady job.
+E. None of the above.

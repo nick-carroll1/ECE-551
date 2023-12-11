@@ -1,0 +1,41 @@
+#error
+printSsData
+printSsData invalid.csv
+printSsData empty.txt
+printSsData sunspots_badMonth.csv
+printSsData sunspots_negYear.csv
+printSsData sunspots_lineShift.csv
+printSsData sunspots_negNum.csv
+printSsData sunspots_charYear.csv
+printFilteredSsData
+printFilteredSsData empty.csv
+printFilteredSsData empty.csv 0
+printFilteredSsData empty.csv 1
+printFilteredSsData empty.csv 3
+printFilteredSsData sunspots_data.csv
+printFilteredSsData sunspots_data.csv 0
+printFilteredSsData sunspots_data.csv 10
+printFilteredSsData sunspots_data.csv a
+printFilteredSsData sunspots_data.csv -71
+printFilteredSsData sunspots_small.csv 101
+printLocalMax
+printLocalMax empty.txt
+printLocalMax empty.csv
+
+#success
+printSsData empty.csv
+printSsData sunspots_data.csv
+printSsData sunspots_int.csv
+printFilteredSsData sunspots_data.csv 71
+printLocalMax step3_data/sunspots_data_filtered_71_part00.csv
+printLocalMax step3_data/sunspots_data_filtered_71_part01.csv
+printLocalMax step3_data/sunspots_data_filtered_71_part02.csv
+printLocalMax step3_data/sunspots_data_filtered_71_part03.csv
+printLocalMax step3_data/sunspots_data_filtered_71_part04.csv
+printLocalMax sunspots_data_same_values.csv
+printSsPeriod sunspots_data.csv 3
+printSsPeriod sunspots_data.csv 7
+printSsPeriod sunspots_data.csv 11
+printSsPeriod sunspots_data.csv 23
+printSsPeriod sunspots_data.csv 47
+printSsPeriod sunspots_data.csv 71

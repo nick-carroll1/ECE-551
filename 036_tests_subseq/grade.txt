@@ -1,0 +1,55 @@
+Grading at 09/12/2023:16:56:26.496682
+For commit ID 459fb6bddfb729a100e4f6775deaeecdc37815fc
+Grading at Tue Sep 12 12:56:25 PM EDT 2023
+**Testing broken implementation 10 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 2, but 1 was returned instead.
+**Testing broken implementation 11 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 1, but 2 was returned instead.
+**Testing broken implementation 1 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 1, but 2 was returned instead.
+**Testing broken implementation 2 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 0, but 1 was returned instead.
+**Testing broken implementation 3 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 1, but 2 was returned instead.
+**Testing broken implementation 4 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 0, but 1 was returned instead.
+**Testing broken implementation 5 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 3, but 5 was returned instead.
+**Testing broken implementation 6 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 1, but 0 was returned instead.
+**Testing broken implementation 7 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 1, but 0 was returned instead.
+**Testing broken implementation 8 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 3, but 1 was returned instead.
+**Testing broken implementation 9 **
+-------------------------------------
+
+When the maxSeq function was applied to this array, the expected answer was 3, but 2 was returned instead.
+**Testing correct implementation **
+-------------------------------------
+
+All tests were a success.
+
+All test programs were handled correctly
+
+Overall Grade: PASSED

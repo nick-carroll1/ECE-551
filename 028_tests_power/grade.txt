@@ -1,0 +1,55 @@
+Grading at 09/11/2023:19:50:24.259106
+For commit ID 515235ac95f9771b7d5519f83884fe26fc490dd8
+Grading at Mon Sep 11 03:50:23 PM EDT 2023
+**Testing broken implementation 10 **
+-------------------------------------
+
+Error: power function this the output of power(50, 2) is 50, but it should be 2500
+**Testing broken implementation 11 **
+-------------------------------------
+
+Error: power function this the output of power(-1, 1) is 7, but it should be -1
+**Testing broken implementation 1 **
+-------------------------------------
+
+Error: power function this the output of power(0, 1) is 1, but it should be 0
+**Testing broken implementation 2 **
+-------------------------------------
+
+Error: power function this the output of power(0, 1) is 1, but it should be 0
+**Testing broken implementation 3 **
+-------------------------------------
+
+Error: power function this the output of power(0, 0) is 0, but it should be 1
+**Testing broken implementation 4 **
+-------------------------------------
+
+Error: power function this the output of power(-1, 1) is 65535, but it should be -1
+**Testing broken implementation 5 **
+-------------------------------------
+
+Error: power function this the output of power(1, 10) is 0, but it should be 1
+**Testing broken implementation 6 **
+-------------------------------------
+
+Error: power function this the output of power(0, 1) is 2, but it should be 0
+**Testing broken implementation 7 **
+-------------------------------------
+
+Error: power function this the output of power(0, 1) is 3, but it should be 0
+**Testing broken implementation 8 **
+-------------------------------------
+
+Error: power function this the output of power(1, 10) is 10, but it should be 1
+**Testing broken implementation 9 **
+-------------------------------------
+
+Error: power function this the output of power(1, 10) is 0, but it should be 1
+**Testing correct implementation **
+-------------------------------------
+
+
+All tests were ok.
+
+
+Overall Grade: PASSED

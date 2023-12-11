@@ -1,0 +1,37 @@
+story-step1
+story-step1 story.txt
+story-step1 story.txt story2.txt
+story-step1 story_empty.txt
+story-step1 story_bad_category.txt
+story-step1 story_no_blanks.txt
+story-step1 story_test.txt
+story-step1 story_underscore.txt
+story-step1 story_underscore2.txt
+story-step1 story_blank_format.txt
+story-step1 no_story.txt
+story-step2
+story-step2 words.txt
+story-step2 story_empty.txt
+story-step2 words_duplicate.txt
+story-step2 words_no_colon.txt
+story-step2 words_two_colons.txt
+story-step2 words.txt story.txt
+story-step2 no_words.txt
+story-step3
+story-step3 words.txt
+story-step3 words.txt story2.txt
+story-step3 words.txt story2.txt story.txt
+story-step3 story2.txt words.txt
+story-step3 words.txt story_blank_format.txt
+story-step3 words.txt story_underscore.txt
+story-step3 words.txt story_intTooLarge.txt
+story-step3 words.txt story_empty.txt
+story-step3 story_empty.txt story2.txt
+story-step3 story_empty.txt story_empty.txt
+story-step3 story_empty.txt story_no_blanks.txt
+story-step4 words.txt story2.txt
+story-step4 -n words.txt story2.txt
+story-step4 words.txt -n story2.txt
+story-step4 -n words.txt story2.txt story.txt
+story-step4 words.txt story_bad_category.txt
+story-step4 -n words_duplicate.txt story2.txt
